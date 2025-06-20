@@ -18,6 +18,8 @@ int	ft_print_str(char *str)
 	int	print_count;
 
 	print_count = 0;
+	if (str == NULL)
+		return (ft_print_str("(null)"));
 	while (str[print_count])
 	{
 		write(1, &str[print_count], 1);
