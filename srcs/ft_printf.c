@@ -58,6 +58,7 @@ int	ft_print_format(char c_format, va_list args)
 		return (ft_print_hex(va_arg(args, unsigned int), c_format));
 	else if (c_format == '%')
 		return (ft_print_char('%'));
+	return (0);
 }
 
 int	check_valid_format(char c)
