@@ -45,13 +45,15 @@ int	ft_printf(const char *format, ...)
 int	ft_print_format(char c_format, va_list args)
 {
 	if (c_format == 'c')
-		return (ft_print_char(va_arg(args, char)));
+		return (ft_print_char(va_arg(args, int)));
 	else if (c_format == 's')
 		return (ft_print_str(va_arg(args, char *)));
 	else if (c_format == 'p')
-		ft_print_pointer();
+		return (ft_print_pointer(va_arg(args, void *)));
 	else if (c_format == 'd' || c_format == 'i')
 		return (ft_print_nbr(va_arg(args, int)));
+	else if (c_format == 'u')
+		return (ft_print_nbr(va_arg(args, unsigned int)));
 	else if (c_format == 'x' || c_format == 'X')
 		return (ft_print_hex(va_arg(args, int), c_format));
 	else if (c_format == '%')
