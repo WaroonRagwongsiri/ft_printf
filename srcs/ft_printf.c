@@ -37,6 +37,7 @@ int	ft_printf(const char *format, ...)
 			print_count += ft_print_char(format[i]);
 		i++;
 	}
+	print_count += ft_print_char(format[i]);
 	va_end(args);
 	return (print_count);
 }
@@ -53,9 +54,9 @@ int	ft_print_format(char c_format, va_list args)
 	else if (c_format == 'd' || c_format == 'i')
 		return (ft_print_nbr(va_arg(args, int)));
 	else if (c_format == 'u')
-		return (ft_print_nbr(va_arg(args, unsigned int)));
+		return (ft_print_unsigned(va_arg(args, unsigned int)));
 	else if (c_format == 'x' || c_format == 'X')
-		return (ft_print_hex(va_arg(args, int), c_format));
+		return (ft_print_hex(va_arg(args, unsigned int), c_format));
 	else if (c_format == '%')
 		return (ft_print_char('%'));
 }

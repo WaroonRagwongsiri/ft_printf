@@ -13,11 +13,11 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int		ft_print_hex(int nbr, char c_format);
-void	ft_putnbr_hex_s(int nbr);
-void	ft_putnbr_hex_m(int nbr);
+int		ft_print_hex(unsigned int nbr, char c_format);
+void	ft_putnbr_hex_s(unsigned int nbr);
+void	ft_putnbr_hex_m(unsigned int nbr);
 
-int	ft_print_hex(int nbr, char c_format)
+int	ft_print_hex(unsigned int nbr, char c_format)
 {
 	int		print_count;
 	long	n;
@@ -26,12 +26,7 @@ int	ft_print_hex(int nbr, char c_format)
 	print_count = 0;
 	if (n == 0)
 		return (ft_print_char('0'));
-	if (n < 0)
-	{
-		n = -n;
-		print_count++;
-	}
-	while (n > 15)
+	while (n != 0)
 	{
 		n /= 16;
 		print_count++;
@@ -43,16 +38,11 @@ int	ft_print_hex(int nbr, char c_format)
 	return (print_count);
 }
 
-void	ft_putnbr_hex_s(int nbr)
+void	ft_putnbr_hex_s(unsigned int nbr)
 {
-	long	n;
+	unsigned long	n;
 
 	n = nbr;
-	if (n < 0)
-	{
-		n = -n;
-		write(1, "-", 1);
-	}
 	if (n > 15)
 	{
 		ft_putnbr_hex_s(n / 16);
@@ -64,16 +54,11 @@ void	ft_putnbr_hex_s(int nbr)
 	}
 }
 
-void	ft_putnbr_hex_m(int nbr)
+void	ft_putnbr_hex_m(unsigned int nbr)
 {
-	long	n;
+	unsigned long	n;
 
 	n = nbr;
-	if (n < 0)
-	{
-		n = -n;
-		write(1, "-", 1);
-	}
 	if (n > 15)
 	{
 		ft_putnbr_hex_m(n / 16);

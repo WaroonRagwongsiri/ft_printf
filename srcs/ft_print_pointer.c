@@ -40,7 +40,7 @@ int	ft_print_hex_long(unsigned long bytes)
 	print_count = 0;
 	if (n == 0)
 		return (ft_print_char('0'));
-	while (n > 15)
+	while (n != 0)
 	{
 		n /= 16;
 		print_count++;

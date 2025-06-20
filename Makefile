@@ -16,7 +16,7 @@ CC				:=	cc
 CFLAG			:=	-Wall -Wextra -Werror -g3
 
 SRCS_FILES		:=	ft_printf.c ft_print_char.c ft_print_str.c ft_print_nbr.c \
-					ft_print_hex.c ft_print_pointer.c \
+					ft_print_hex.c ft_print_pointer.c ft_print_unsigned.c \
 
 LIBFT			:=	libft
 SRC_DIR			:=	srcs/
