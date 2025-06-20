@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/15 18:19:32 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/15 18:19:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	*ft_memset(void *s, int c, size_t n);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*new;
 
-#endif
+	i = 0;
+	new = s;
+	while (i < n)
+	{
+		new[i] = c;
+		i++;
+	}
+	return (s);
+}
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	test[] = "abcdef";
+// 	ft_memset(test, 'a', 3);
+// 	printf("%s", test);
+// 	return (0);
+// }

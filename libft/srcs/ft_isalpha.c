@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/17 17:28:00 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/17 17:28:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_isalpha(int c);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+int	ft_isalpha(int c)
+{
+	if ((c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z'))
+	{
+		return (1024);
+	}
+	return (0);
+}
 
-#endif
+// #include <stdio.h>
+// #include <ctype.h>
+
+// int	main(void)
+// {
+// 	printf("real %d\n", isalpha('z'));
+// 	printf("fake %d\n", ft_isalpha('z'));
+// 	return (0);
+// }

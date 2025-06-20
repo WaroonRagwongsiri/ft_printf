@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/17 20:29:06 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/17 20:29:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
 
-#endif
+	if (size == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
+}

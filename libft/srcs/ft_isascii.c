@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/17 17:50:45 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/17 17:50:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_isascii(int c);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+	{
+		return (1);
+	}
+	return (0);
+}
 
-#endif
+// #include <stdio.h>
+// #include <ctype.h>
+
+// int	main(void)
+// {
+// 	printf("real %d\n", isascii(256));
+// 	printf("fake %d\n", ft_isascii(256));
+// 	return (0);
+// }

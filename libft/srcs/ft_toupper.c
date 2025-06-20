@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/17 18:15:35 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/17 18:15:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_toupper(int c);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+	{
+		c -= ('a' - 'A');
+	}
+	return (c);
+}
 
-#endif
+// #include <ctype.h>
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	printf("real %c\n",toupper('a'));
+// 	printf("fake %c\n",ft_toupper('a'));
+// 	return (0);
+// }

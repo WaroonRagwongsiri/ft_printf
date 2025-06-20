@@ -1,26 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/18 17:53:41 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/18 17:53:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	ft_putnbr_fd(int n, int fd);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	nbr;
 
-#endif
+	nbr = n;
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		write(fd, "-", 1);
+	}
+	if (nbr > 9)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
+	}
+	else
+	{
+		write(fd, &"0123456789"[nbr], 1);
+	}
+}
+
+// #include <limits.h>
+
+// int	main(void)
+// {
+// 	ft_putnbr_fd(0, 2);
+// 	return (0);
+// }

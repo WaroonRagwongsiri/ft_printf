@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/17 18:19:38 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/17 18:19:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_tolower(int c);
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+	{
+		c += ('a' - 'A');
+	}
+	return (c);
+}
 
-#endif
+// #include <ctype.h>
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	printf("real %c\n",tolower('A'));
+// 	printf("fake %c\n",ft_tolower('A'));
+// 	return (0);
+// }

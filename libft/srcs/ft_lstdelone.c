@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 12:26:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/20 12:26:20 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/19 16:25:37 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/19 16:25:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_nbr(int nbr);
-int	ft_print_hex(int nbr, char c_format);
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (lst == NULL)
+		return ;
+	if (lst->content != NULL)
+		del(lst->content);
+	free(lst);
+}
 
-#endif
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	t_list	*l;
+
+// 	l = NULL;
+// 	ft_lstadd_back(&l, ft_lstnew(malloc(1)));
+// 	ft_lstdelone(l, free);
+// 	return (0);
+// }
