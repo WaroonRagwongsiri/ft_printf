@@ -14,13 +14,13 @@
 
 #include <stdio.h>
 
-char	*ft_strrchr(const char *s, int c);
-
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 	char	new_c;
 
+	if (!s)
+		return (NULL);
 	new_c = c;
 	len = ft_strlen(s);
 	while (len > 0)

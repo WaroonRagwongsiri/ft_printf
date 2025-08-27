@@ -12,58 +12,49 @@
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set);
-
-size_t	count_word(char const *s1, char const *set);
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*new;
-	size_t	j;
-	size_t	word;
+	int		start;
+	int		end;
 
 	if (set == NULL || s1 == NULL)
 		return (NULL);
-	word = count_word(s1, set);
-	new = malloc(word + 1);
-	if (!new)
-		return (NULL);
-	j = 0;
-	while (*s1)
-	{
-		if (ft_strchr(set, *s1) == NULL)
-		{
-			new[j] = *s1;
-			j++;
-		}
-		s1++;
-	}
-	new[j] = '\0';
+	start = find_start_trim(s1, set);
+	end = find_end_trim(s1, set, start);
+	new = ft_calloc(end - start + 1, sizeof(char));
+	ft_strlcpy(new, &s1[start], end - start + 1);
 	return (new);
 }
 
-size_t	count_word(char const *s1, char const *set)
+int	in_set_trim(char c, const char *set)
 {
-	size_t	i;
-	size_t	word;
-
-	i = 0;
-	word = 0;
-	while (s1[i])
+	while (*set)
 	{
-		if (ft_strchr(set, s1[i]) == NULL)
-			word++;
-		i++;
+		if (c == *set)
+			return (1);
+		set++;
 	}
-	return (word);
+	return (0);
 }
 
-// #include <stdio.h>
+int	find_start_trim(char const *s1, char const *set)
+{
+	int		start;
 
-// int	main(void)
-// {
-// 	char	*new = ft_strtrim("          \t   \n  abc \n  \t", "");
-// 	printf("%s\n", new);
-// 	free(new);
-// 	return (0);
-// }
+	start = 0;
+	while (s1[start] && in_set_trim(s1[start], set))
+		start++;
+	return (start);
+}
+
+int	find_end_trim(char const *s1, char const *set, int start)
+{
+	int		end;
+
+	end = ft_strlen(s1) - 1;
+	while (end > start && in_set_trim(s1[end], set))
+		end--;
+	end++;
+	return (end);
+}

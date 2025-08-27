@@ -13,40 +13,32 @@
 #include "libft.h"
 #include <stdio.h>
 
-char	**ft_split(char const *s, char c);
-size_t	count_word(char const *s, char c);
-void	*free_arr(char **arr);
-char	**process(char const *s, char c, char **new, size_t i);
-void	inner_loop(char const *s, size_t last_index_sep,
-			size_t index_sep, char *new);
-
 char	**ft_split(char const *s, char c)
 {
 	char	**new;
 	size_t	wc;
 
+	if (!s)
+		return (NULL);
 	if (s[0] == '\0')
 	{
-		new = malloc(sizeof(char *) * 1);
+		new = ft_calloc(1, sizeof(char *));
 		if (!new)
 			return (NULL);
 		new[0] = NULL;
 		return (new);
 	}
-	wc = count_word(s, c);
-	new = malloc(sizeof(char *) * (wc + 1));
+	wc = count_word_split(s, c);
+	new = ft_calloc((wc + 1), sizeof(char *));
 	if (!new)
 		return (NULL);
-	if (process(s, c, new, 0) == NULL)
-	{
-		new[wc] = NULL;
+	if (process_split(s, c, new, -1) == NULL)
 		return (NULL);
-	}
 	new[wc] = NULL;
 	return (new);
 }
 
-size_t	count_word(char const *s, char c)
+size_t	count_word_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	word;
@@ -56,13 +48,9 @@ size_t	count_word(char const *s, char c)
 	while (s[i])
 	{
 		if (s[i] != c && i == 0)
-		{
 			word++;
-		}
 		else if (s[i] != c && s[i - 1] == c)
-		{
 			word++;
-		}
 		i++;
 	}
 	return (word);
@@ -82,14 +70,14 @@ void	*free_arr(char **arr)
 	return (NULL);
 }
 
-char	**process(char const *s, char c, char **new, size_t i)
+char	**process_split(char const *s, char c, char **new, size_t i)
 {
 	size_t	index_sep;
 	size_t	last_index_sep;
 	size_t	new_count;
 
 	new_count = 0;
-	while (i <= ft_strlen(s))
+	while (++i <= ft_strlen(s))
 	{
 		if (s[i] != c && i == 0)
 			last_index_sep = i;
@@ -100,18 +88,18 @@ char	**process(char const *s, char c, char **new, size_t i)
 			if ((s[i] == c || i == ft_strlen(s)) && s[i - 1] != c)
 			{
 				index_sep = i;
-				new[new_count] = malloc(index_sep - last_index_sep + 1);
+				new[new_count] = ft_calloc(index_sep - last_index_sep + 1, 1);
 				if (!new[new_count])
 					return (free_arr(new));
-				inner_loop(s, last_index_sep, index_sep, new[new_count++]);
+				inner_loop_split(s, last_index_sep, index_sep,
+					new[new_count++]);
 			}
 		}
-		i++;
 	}
 	return (new);
 }
 
-void	inner_loop(char const *s, size_t last_index_sep
+void	inner_loop_split(char const *s, size_t last_index_sep
 			, size_t index_sep, char *new)
 {
 	size_t	j;

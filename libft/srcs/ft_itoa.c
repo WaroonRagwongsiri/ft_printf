@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-char	*ft_itoa(int n);
-void	process(char *str, long n);
-void	ft_strcat_chr(char *str, char c);
-char	*iszero(void);
-
 char	*ft_itoa(int n)
 {
 	char	*new;
@@ -37,15 +32,14 @@ char	*ft_itoa(int n)
 		nbr /= 10;
 		len++;
 	}
-	new = malloc(len);
+	new = ft_calloc(len, sizeof(char));
 	if (!new)
 		return (NULL);
-	new[0] = '\0';
-	process(new, n);
+	process_itoa(new, n);
 	return (new);
 }
 
-void	process(char *str, long n)
+void	process_itoa(char *str, long n)
 {
 	long	nbr;
 
@@ -57,8 +51,8 @@ void	process(char *str, long n)
 	}
 	if (nbr > 9)
 	{
-		process(str, nbr / 10);
-		process(str, nbr % 10);
+		process_itoa(str, nbr / 10);
+		process_itoa(str, nbr % 10);
 	}
 	else
 	{
@@ -72,9 +66,7 @@ void	ft_strcat_chr(char *str, char c)
 
 	i = 0;
 	while (str[i])
-	{
 		i++;
-	}
 	str[i] = c;
 	i++;
 	str[i] = '\0';
@@ -86,9 +78,7 @@ char	*iszero(void)
 
 	new = malloc(2);
 	if (!new)
-	{
 		return (NULL);
-	}
 	new[0] = '0';
 	new[1] = '\0';
 	return (new);

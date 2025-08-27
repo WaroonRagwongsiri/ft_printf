@@ -12,20 +12,11 @@
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n);
-
 void	*ft_bzero(void *s, size_t n)
 {
-	size_t			i;
-	unsigned char	*new;
-
-	i = 0;
-	new = s;
-	while (i < n)
-	{
-		new[i] = 0;
-		i++;
-	}
+	if (!s)
+		return (NULL);
+	ft_memset(s, 0, n);
 	return (s);
 }
 
