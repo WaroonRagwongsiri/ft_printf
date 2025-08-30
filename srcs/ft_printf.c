@@ -23,6 +23,8 @@ int	ft_printf(const char *format, ...)
 	int		print_count;
 	size_t	i;
 
+	if (!format)
+		return (0);
 	print_count = 0;
 	i = 0;
 	va_start(args, format);
