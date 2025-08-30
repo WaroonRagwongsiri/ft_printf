@@ -1,4 +1,10 @@
+*.out
 *.o
 *.gch
 *.a
 test*.c
+run.sh
+printfTester
+Tester
+test*
+*.txt
