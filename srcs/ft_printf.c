@@ -79,9 +79,7 @@ int	check_valid_format(char c)
 	while (*format)
 	{
 		if (c == *format)
-		{
 			return (1);
-		}
 	}
 	return (0);
 }

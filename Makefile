@@ -31,7 +31,7 @@ $(NAME)			:	$(OBJS) Makefile
 	@make -C $(LIBFT)
 	@cp libft/libft.a .
 	@mv libft.a $(NAME)
-	ar rcs -o $(NAME) $^
+	ar rcs -o $(NAME) $(OBJS)
 
 $(OBJS)			:	%.o : %.c
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
